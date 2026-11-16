@@ -12,19 +12,32 @@
 // === Classi ===
 
 class Libro {
-    constructor(_title, _author, _year, _read) {
+    letto = false;
+    #id;
+    constructor(_title, _author, _year) {
+        this.#id = crypto.randomUUID();
         this.title = _title;
         this.author = _author;
         this.year = _year;
-        this.read = _read;
+    }
+
+    segnaComeLetto(){
+        this.letto = true
+    };
+
+    formato(){
+        return "cartaceo"
     }
 }
 
 class LibroDigitale extends Libro {
-    constructor(_title, _author, _year, _read, _format, _mb) {
-        super(_title, _author, _year, _read);
-        this.format = _format;
-        this.mb = _mb;
+    constructor(_title, _author, _year, _mb) {
+        super(_title, _author, _year);
+        this.mb = _mb
+    }
+
+    formato(){
+        return `digitale (${this.mb} MB)`
     }
 }
 
