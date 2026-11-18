@@ -17,6 +17,19 @@
   </header>
 
   <main class="container">
+    <section class="cerca-section">
+      <h2>Cerca</h2>
+      <div class="campo">
+        <label for="cerca">Cerca</label>
+        <input type="text" id="cerca" placeholder="Digita libro o autore">
+        <div id="spinner" class="spinner" hidden>Caricamento in corso...</div>
+        <div id="errore" class="alert alert-danger" hidden></div>
+      </div>
+
+      <ul id="risultati" class="risultati">
+        
+      </ul>
+    </section>
 
     <section class="form-section">
       <form id="aggiungi-libro">

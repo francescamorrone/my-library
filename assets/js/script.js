@@ -1,5 +1,10 @@
+const spinner = document.getElementById("spinner");
+const errore = document.getElementById("errore");
+
+
+//classi
 class Libro {
-    letto = false;
+    letto = false; //di default i libri sono letti
     static fromJSON(d) { return Object.assign(new this(d.titolo, d.autore, d.anno), d); }
 
     constructor(titolo, autore, anno) {
@@ -17,8 +22,8 @@ class Libro {
         return "cartaceo";
     }
 
-    static daStringa(s) {
-        const [titolo, autore, anno] = s.split("|");
+    static daStringa(string) {
+        const [titolo, autore, anno] = string.split("|");
         return new Libro(titolo, autore, Number(anno));
     }
 }
@@ -34,6 +39,7 @@ class LibroDigitale extends Libro {
     }
 }
 
+//localstorage
 const STORAGE_KEY = "libri";
 
 function salvaLibri() {
@@ -95,6 +101,22 @@ function renderLibri() {
     } else {
         lista.replaceChildren(...righe);
     }
+}
+
+function mostraSpinner() {
+    spinner.removeAttribute("hidden");
+    errore.setAttribute("hidden", "true")
+}
+
+function nascondiSpinner(){
+    spinner.setAttribute("hidden", "true")
+}
+
+function mostraErrore(msg) {
+
+    errore.textContent = msg;
+    errore.removeAttribute("hidden")
+    //anche: errore.hidden = false
 }
 
 
